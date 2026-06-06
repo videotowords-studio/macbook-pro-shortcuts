@@ -1,0 +1,996 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MacBook Pro 快捷键表</title>
+  <style>
+    :root {
+      --ink: #1f2933;
+      --muted: #5d6b78;
+      --line: #d8dee5;
+      --head: #f2f5f8;
+      --green: #0f7a3a;
+      --green-bg: #e8f7ee;
+      --green-line: #b8e3c8;
+      --blue: #255f9e;
+      --amber-bg: #fff6df;
+      --table-head-top: 0px;
+      --cell-padding-y: 8px;
+      --cell-padding-x: 12px;
+    }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+    header {
+      padding: 28px 32px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      letter-spacing: 0;
+    }
+    .sub {
+      margin: 4px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .legend {
+      margin: 16px 32px 12px;
+      padding: 12px 14px;
+      background: var(--head);
+      border: 1px solid var(--line);
+      font-size: 14px;
+    }
+    .legend strong {
+      color: var(--ink);
+    }
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      box-sizing: border-box;
+      margin: 14px 0 12px;
+      padding: 12px 32px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-right: 0;
+      border-left: 0;
+      box-shadow: 0 2px 10px rgba(31, 41, 51, 0.08);
+    }
+    .toolbar input[type="search"] {
+      flex: 1 1 260px;
+      min-width: 180px;
+      height: 34px;
+      padding: 0 10px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      font: inherit;
+    }
+    .spacing-control {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      height: 34px;
+      padding: 0 10px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #ffffff;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .spacing-control input[type="range"] {
+      width: 88px;
+      accent-color: var(--green);
+    }
+    .spacing-value {
+      min-width: 34px;
+      color: var(--muted);
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    .toolbar button,
+    .file-button {
+      height: 34px;
+      padding: 0 10px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--ink);
+      background: #f8fafc;
+      font: inherit;
+      cursor: pointer;
+    }
+    .toolbar button.primary {
+      color: #ffffff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+    .toolbar button.danger {
+      color: #8a1f11;
+      background: #fff1ee;
+      border-color: #f3b7ac;
+    }
+    .file-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .file-button input {
+      display: none;
+    }
+    .status {
+      min-height: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .table-wrap {
+      padding: 0 32px 32px;
+      overflow: visible;
+    }
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      min-width: 1120px;
+      font-size: 13.5px;
+    }
+    th, td {
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: var(--cell-padding-y) var(--cell-padding-x);
+      line-height: 1.42;
+      vertical-align: top;
+    }
+    th:first-child,
+    td:first-child {
+      border-left: 1px solid var(--line);
+    }
+    thead th {
+      position: sticky;
+      top: var(--table-head-top);
+      z-index: 6;
+      background: var(--head);
+      border-top: 1px solid var(--line);
+      box-shadow: 0 2px 0 var(--line);
+      text-align: left;
+      font-weight: 700;
+    }
+    tr.common td {
+      background: var(--green-bg);
+      border-color: var(--green-line);
+    }
+    .badge {
+      display: inline-block;
+      min-width: 38px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .common .badge {
+      color: #ffffff;
+      background: var(--green);
+    }
+    .normal .badge {
+      color: var(--muted);
+      background: #eef2f5;
+    }
+    .advanced .badge {
+      color: #6f4b00;
+      background: var(--amber-bg);
+      border: 1px solid #ead393;
+    }
+    .combo {
+      color: #111827;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .category {
+      color: var(--blue);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    td[contenteditable="true"] {
+      outline: none;
+      cursor: text;
+    }
+    td[contenteditable="true"]:focus {
+      background: #fffdf2;
+      box-shadow: inset 0 0 0 2px #f0c75e;
+    }
+    tr.is-hidden {
+      display: none;
+    }
+    .select-col,
+    td.select-cell,
+    .actions-col,
+    td.actions {
+      width: 1%;
+      white-space: nowrap;
+    }
+    td.select-cell,
+    .select-col {
+      text-align: center;
+    }
+    .row-select {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+    .row-action {
+      margin: 0 2px 2px 0;
+      padding: 2px 6px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: #ffffff;
+      color: var(--ink);
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .row-action.delete {
+      color: #9b1c13;
+    }
+    tr.is-selected td {
+      box-shadow: inset 0 0 0 9999px rgba(37, 95, 158, 0.08);
+    }
+    footer {
+      padding: 0 32px 28px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    a {
+      color: var(--blue);
+    }
+    @media print {
+      header, .legend, .table-wrap, footer { padding-left: 12px; padding-right: 12px; }
+      th { position: static; }
+      .toolbar { position: static; }
+      table { font-size: 11px; min-width: 0; }
+      .badge { border-radius: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MacBook Pro 快捷键表</h1>
+    <p class="sub">适用设备：MacBookPro15,2，Intel MacBook Pro，Touch Bar 机型；系统参考：macOS 15.7.7。</p>
+    <p class="sub">绿色行表示高频常用。当前共 248 条快捷键/操作入口。不同 App 可以定义自己的快捷键；遇到冲突时，以当前 App 菜单栏显示的快捷键为准。</p>
+  </header>
+
+  <section class="legend">
+    <strong>按键名称说明：</strong>
+    本表已经使用实际按钮名称：Command、Shift、Option、Control、Fn key、Escape、Tab、Delete、Return、Space Bar、Up Arrow、Down Arrow、Left Arrow、Right Arrow。
+    你的 MacBookPro15,2 左下角是 Fn key；部分新款 Apple 键盘会把同类按键标成 Globe key，也就是地球仪键。Touch Bar 机型上，F1-F12 往往需要按住 Fn key 才显示；你也可以在“系统设置 → 键盘”里调整 Fn key 行为和 Touch Bar 设置。
+    直接点击表格单元格即可编辑；勾选一行或多行后，可以上移、下移、置顶或置底；“保存”会保存到当前浏览器本地，“导出 HTML”会生成一个可上传到网上同步查看的独立文件。
+  </section>
+
+  <section class="toolbar" aria-label="编辑工具栏">
+    <input id="searchInput" type="search" placeholder="搜索分类、简称、场景、组合键或注意事项">
+    <label class="spacing-control" for="rowSpacing">行距
+      <input id="rowSpacing" type="range" min="4" max="16" step="1" value="8">
+      <span id="rowSpacingValue" class="spacing-value">8px</span>
+    </label>
+    <label class="spacing-control" for="columnSpacing">列距
+      <input id="columnSpacing" type="range" min="6" max="24" step="1" value="12">
+      <span id="columnSpacingValue" class="spacing-value">12px</span>
+    </label>
+    <button id="addRow" type="button">新增行</button>
+    <button id="moveUp" type="button">上移</button>
+    <button id="moveDown" type="button">下移</button>
+    <button id="moveTop" type="button">置顶</button>
+    <button id="moveBottom" type="button">置底</button>
+    <button id="saveTable" class="primary" type="button">保存</button>
+    <button id="exportHtml" type="button">导出 HTML</button>
+    <button id="exportJson" type="button">导出 JSON</button>
+    <button id="exportCsv" type="button">导出 CSV</button>
+    <label class="file-button">导入 JSON<input id="importJson" type="file" accept="application/json,.json"></label>
+    <button id="resetTable" class="danger" type="button">恢复初始</button>
+    <span id="status" class="status" role="status"></span>
+  </section>
+
+  <main class="table-wrap">
+    <table id="shortcutsTable">
+      <thead>
+        <tr>
+          <th class="select-col">选择</th>
+          <th>序号</th>
+          <th>常用程度</th>
+          <th>分类</th>
+          <th>快捷键简称</th>
+          <th>使用场景</th>
+          <th>快捷键组合</th>
+          <th>注意事项</th>
+          <th class="actions-col">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="common"><td>1</td><td><span class="badge">常用</span></td><td class="category">通用编辑</td><td>复制</td><td>复制选中的文字、图片、文件或对象。</td><td class="combo">Command + C</td><td>Finder 里的文件也可复制。</td></tr>
+        <tr class="common"><td>2</td><td><span class="badge">常用</span></td><td class="category">通用编辑</td><td>粘贴</td><td>把剪贴板内容粘贴到当前位置。</td><td class="combo">Command + V</td><td>在 Finder 中会粘贴复制过来的文件。</td></tr>
+        <tr class="common"><td>3</td><td><span class="badge">常用</span></td><td class="category">通用编辑</td><td>剪切</td><td>剪切文字或可编辑对象。</td><td class="combo">Command + X</td><td>Finder 文件移动不是 Command + X；先 Command + C，再用 Option + Command + V 移动。</td></tr>
+        <tr class="common"><td>4</td><td><span class="badge">常用</span></td><td class="category">通用编辑</td><td>撤销</td><td>撤销上一步操作。</td><td class="combo">Command + Z</td><td>多数 App 支持连续撤销。</td></tr>
+        <tr class="common"><td>5</td><td><span class="badge">常用</span></td><td class="category">通用编辑</td><td>重做</td><td>恢复刚刚撤销的操作。</td><td class="combo">Shift + Command + Z</td><td>部分 App 也使用 Command + Y。</td></tr>
+        <tr class="common"><td>6</td><td><span class="badge">常用</span></td><td class="category">通用编辑</td><td>全选</td><td>选择当前文档、列表、文件夹或输入框中的全部内容。</td><td class="combo">Command + A</td><td>焦点不同，选中的范围也不同。</td></tr>
+        <tr class="common"><td>7</td><td><span class="badge">常用</span></td><td class="category">通用编辑</td><td>查找</td><td>在当前页面、文档或列表中搜索内容。</td><td class="combo">Command + F</td><td>浏览器、文档、Finder 都常用。</td></tr>
+        <tr class="normal"><td>8</td><td><span class="badge">一般</span></td><td class="category">通用编辑</td><td>查找下一个</td><td>跳到下一处匹配结果。</td><td class="combo">Command + G</td><td>配合 Command + F 使用。</td></tr>
+        <tr class="normal"><td>9</td><td><span class="badge">一般</span></td><td class="category">通用编辑</td><td>查找上一个</td><td>跳到上一处匹配结果。</td><td class="combo">Shift + Command + G</td><td>在 Chrome、文本编辑器、PDF 中很有用。</td></tr>
+        <tr class="common"><td>10</td><td><span class="badge">常用</span></td><td class="category">通用编辑</td><td>保存</td><td>保存当前文档或编辑内容。</td><td class="combo">Command + S</td><td>网页中通常是保存页面。</td></tr>
+        <tr class="normal"><td>11</td><td><span class="badge">一般</span></td><td class="category">通用编辑</td><td>另存为/复制副本</td><td>打开另存为、复制副本或页面设置相关功能。</td><td class="combo">Shift + Command + S</td><td>不同 App 行为略有差异。</td></tr>
+        <tr class="common"><td>12</td><td><span class="badge">常用</span></td><td class="category">通用编辑</td><td>打开</td><td>打开选中项目或打开文件选择窗口。</td><td class="combo">Command + O</td><td>Finder 里也可用 Command + Down Arrow 打开选中项。</td></tr>
+        <tr class="common"><td>13</td><td><span class="badge">常用</span></td><td class="category">通用编辑</td><td>新建</td><td>新建窗口、文档或项目。</td><td class="combo">Command + N</td><td>具体创建什么取决于当前 App。</td></tr>
+        <tr class="common"><td>14</td><td><span class="badge">常用</span></td><td class="category">通用编辑</td><td>打印</td><td>打开打印窗口。</td><td class="combo">Command + P</td><td>网页、PDF、文档都适用。</td></tr>
+        <tr class="common"><td>15</td><td><span class="badge">常用</span></td><td class="category">通用编辑</td><td>偏好设置</td><td>打开当前 App 的设置。</td><td class="combo">Command + ,</td><td>大多数 Mac App 使用这个组合。</td></tr>
+        <tr class="normal"><td>16</td><td><span class="badge">一般</span></td><td class="category">通用编辑</td><td>帮助菜单</td><td>打开菜单栏里的帮助搜索。</td><td class="combo">Shift + Command + ?</td><td>找不到菜单项时很有用。</td></tr>
+        <tr class="common"><td>17</td><td><span class="badge">常用</span></td><td class="category">输入与字符</td><td>表情与符号</td><td>输入 emoji、特殊符号、单位符号。</td><td class="combo">Control + Command + Space Bar</td><td>部分系统也支持 Fn key + E。</td></tr>
+        <tr class="common"><td>18</td><td><span class="badge">常用</span></td><td class="category">输入与字符</td><td>粘贴并匹配样式</td><td>粘贴纯文本并使用当前位置格式。</td><td class="combo">Option + Shift + Command + V</td><td>从网页复制到文档、邮件时非常实用。</td></tr>
+        <tr class="common"><td>19</td><td><span class="badge">常用</span></td><td class="category">系统导航</td><td>Spotlight</td><td>搜索 App、文件、网页建议、计算结果。</td><td class="combo">Command + Space Bar</td><td>若被输入法占用，可在键盘快捷键中调整。</td></tr>
+        <tr class="common"><td>20</td><td><span class="badge">常用</span></td><td class="category">系统导航</td><td>切换 App</td><td>在已打开 App 之间快速切换。</td><td class="combo">Command + Tab</td><td>按住 Command，继续点 Tab 可轮换。</td></tr>
+        <tr class="common"><td>21</td><td><span class="badge">常用</span></td><td class="category">系统导航</td><td>切换当前 App 窗口</td><td>在同一个 App 的多个窗口之间切换。</td><td class="combo">Command + `</td><td>` 是 Tab 上方、数字 1 左侧的键；不同键盘布局符号可能不同。</td></tr>
+        <tr class="common"><td>22</td><td><span class="badge">常用</span></td><td class="category">系统导航</td><td>全屏切换</td><td>进入或退出当前 App 的全屏模式。</td><td class="combo">Control + Command + F</td><td>需 App 支持全屏。</td></tr>
+        <tr class="common"><td>23</td><td><span class="badge">常用</span></td><td class="category">系统导航</td><td>关闭窗口/标签</td><td>关闭当前窗口或浏览器标签页。</td><td class="combo">Command + W</td><td>不会退出 App；Chrome 中会关闭当前标签。</td></tr>
+        <tr class="normal"><td>24</td><td><span class="badge">一般</span></td><td class="category">系统导航</td><td>关闭全部窗口</td><td>关闭当前 App 的所有窗口。</td><td class="combo">Option + Command + W</td><td>使用前确认未保存内容。</td></tr>
+        <tr class="common"><td>25</td><td><span class="badge">常用</span></td><td class="category">系统导航</td><td>退出 App</td><td>退出当前前台 App。</td><td class="combo">Command + Q</td><td>Chrome、微信、Lark 等会完全退出。</td></tr>
+        <tr class="common"><td>26</td><td><span class="badge">常用</span></td><td class="category">系统导航</td><td>强制退出</td><td>App 卡死时打开强制退出窗口。</td><td class="combo">Option + Command + Escape</td><td>强退可能丢失未保存内容。</td></tr>
+        <tr class="common"><td>27</td><td><span class="badge">常用</span></td><td class="category">系统导航</td><td>锁定屏幕</td><td>离开座位前快速锁屏。</td><td class="combo">Control + Command + Q</td><td>带 Touch ID 的键盘也可按 Touch ID 锁屏。</td></tr>
+        <tr class="normal"><td>28</td><td><span class="badge">一般</span></td><td class="category">系统导航</td><td>隐藏当前 App</td><td>隐藏前台 App 的所有窗口。</td><td class="combo">Command + H</td><td>App 仍在运行。</td></tr>
+        <tr class="normal"><td>29</td><td><span class="badge">一般</span></td><td class="category">系统导航</td><td>隐藏其他 App</td><td>只保留当前 App 可见。</td><td class="combo">Option + Command + H</td><td>整理桌面时有用。</td></tr>
+        <tr class="normal"><td>30</td><td><span class="badge">一般</span></td><td class="category">系统导航</td><td>最小化窗口</td><td>把当前窗口收到 Dock。</td><td class="combo">Command + M</td><td>Chrome 标签页不会被关闭。</td></tr>
+        <tr class="normal"><td>31</td><td><span class="badge">一般</span></td><td class="category">系统导航</td><td>显示/隐藏 Dock</td><td>切换 Dock 自动隐藏状态。</td><td class="combo">Option + Command + D</td><td>也可在系统设置里修改。</td></tr>
+        <tr class="common"><td>32</td><td><span class="badge">常用</span></td><td class="category">系统导航</td><td>Mission Control</td><td>查看所有窗口、桌面和全屏 App。</td><td class="combo">Control + Up Arrow</td><td>Touch Bar 也可能显示 Mission Control 按钮。</td></tr>
+        <tr class="normal"><td>33</td><td><span class="badge">一般</span></td><td class="category">系统导航</td><td>当前 App 所有窗口</td><td>只显示当前 App 的窗口。</td><td class="combo">Control + Down Arrow</td><td>适合多窗口 App。</td></tr>
+        <tr class="common"><td>34</td><td><span class="badge">常用</span></td><td class="category">系统导航</td><td>切换桌面</td><td>在多个桌面/全屏空间之间移动。</td><td class="combo">Control + Left Arrow / Control + Right Arrow</td><td>需已创建多个桌面或全屏空间。</td></tr>
+        <tr class="normal"><td>35</td><td><span class="badge">一般</span></td><td class="category">系统导航</td><td>显示桌面</td><td>临时露出桌面。</td><td class="combo">Command + Mission Control 或 Fn key + F11</td><td>你的 Touch Bar 机型可能需要按 Fn key 显示 F11。</td></tr>
+
+        <tr class="common"><td>36</td><td><span class="badge">常用</span></td><td class="category">Finder 文件</td><td>新建 Finder 窗口</td><td>打开一个新的 Finder 窗口。</td><td class="combo">Command + N</td><td>仅 Finder 前台时适用。</td></tr>
+        <tr class="common"><td>37</td><td><span class="badge">常用</span></td><td class="category">Finder 文件</td><td>新建文件夹</td><td>在当前位置创建新文件夹。</td><td class="combo">Shift + Command + N</td><td>桌面和 Finder 都可用。</td></tr>
+        <tr class="normal"><td>38</td><td><span class="badge">一般</span></td><td class="category">Finder 文件</td><td>用所选项目建文件夹</td><td>把选中的多个文件装进新文件夹。</td><td class="combo">Control + Command + N</td><td>适合整理下载文件。</td></tr>
+        <tr class="common"><td>39</td><td><span class="badge">常用</span></td><td class="category">Finder 文件</td><td>快速预览</td><td>不打开 App，直接预览文件。</td><td class="combo">Space Bar</td><td>选中文件后按空格。</td></tr>
+        <tr class="normal"><td>40</td><td><span class="badge">一般</span></td><td class="category">Finder 文件</td><td>Quick Look 幻灯片</td><td>预览多张图片或多个文件。</td><td class="combo">Option + Command + Y</td><td>先选择多个文件。</td></tr>
+        <tr class="common"><td>41</td><td><span class="badge">常用</span></td><td class="category">Finder 文件</td><td>打开选中项</td><td>打开 Finder 中选中的文件或文件夹。</td><td class="combo">Command + Down Arrow</td><td>也可用 Command + O。</td></tr>
+        <tr class="common"><td>42</td><td><span class="badge">常用</span></td><td class="category">Finder 文件</td><td>重命名</td><td>重命名选中文件或文件夹。</td><td class="combo">Return</td><td>Finder 中按 Return 是重命名，不是打开。</td></tr>
+        <tr class="common"><td>43</td><td><span class="badge">常用</span></td><td class="category">Finder 文件</td><td>移到废纸篓</td><td>删除选中的文件或文件夹。</td><td class="combo">Command + Delete</td><td>仍可从废纸篓恢复。</td></tr>
+        <tr class="normal"><td>44</td><td><span class="badge">一般</span></td><td class="category">Finder 文件</td><td>清倒废纸篓</td><td>清空废纸篓。</td><td class="combo">Shift + Command + Delete</td><td>会弹确认窗口。</td></tr>
+        <tr class="advanced"><td>45</td><td><span class="badge">进阶</span></td><td class="category">Finder 文件</td><td>无确认清倒废纸篓</td><td>直接清空废纸篓。</td><td class="combo">Option + Shift + Command + Delete</td><td>不可轻易恢复，谨慎使用。</td></tr>
+        <tr class="common"><td>46</td><td><span class="badge">常用</span></td><td class="category">Finder 文件</td><td>移动复制过的文件</td><td>把先前复制的文件移动到当前位置。</td><td class="combo">Option + Command + V</td><td>Finder 文件“剪切移动”的正确方式。</td></tr>
+        <tr class="normal"><td>47</td><td><span class="badge">一般</span></td><td class="category">Finder 文件</td><td>显示简介</td><td>查看文件大小、路径、权限等信息。</td><td class="combo">Command + I</td><td>多选文件会打开多个简介窗口。</td></tr>
+        <tr class="normal"><td>48</td><td><span class="badge">一般</span></td><td class="category">Finder 文件</td><td>复制为路径名</td><td>复制选中文件的完整路径。</td><td class="combo">Option + Command + C</td><td>在 Finder 菜单“编辑”里也能看到。</td></tr>
+        <tr class="normal"><td>49</td><td><span class="badge">一般</span></td><td class="category">Finder 文件</td><td>制作替身</td><td>给文件或文件夹创建 alias。</td><td class="combo">Control + Command + A</td><td>类似快捷方式，不复制原文件。</td></tr>
+        <tr class="normal"><td>50</td><td><span class="badge">一般</span></td><td class="category">Finder 文件</td><td>复制项目</td><td>在同一位置复制选中项目。</td><td class="combo">Command + D</td><td>会生成副本文件。</td></tr>
+        <tr class="common"><td>51</td><td><span class="badge">常用</span></td><td class="category">Finder 跳转</td><td>前往文件夹</td><td>直接输入路径跳到指定目录。</td><td class="combo">Shift + Command + G</td><td>可输入 /Applications、~/Downloads 等。</td></tr>
+        <tr class="common"><td>52</td><td><span class="badge">常用</span></td><td class="category">Finder 跳转</td><td>上级文件夹</td><td>打开当前文件夹的上一级。</td><td class="combo">Command + Up Arrow</td><td>在层级目录中很高效。</td></tr>
+        <tr class="normal"><td>53</td><td><span class="badge">一般</span></td><td class="category">Finder 跳转</td><td>后退/前进</td><td>在 Finder 浏览历史中后退或前进。</td><td class="combo">Command + [ / Command + ]</td><td>类似浏览器的返回/前进。</td></tr>
+        <tr class="common"><td>54</td><td><span class="badge">常用</span></td><td class="category">Finder 跳转</td><td>下载</td><td>打开 Downloads 文件夹。</td><td class="combo">Option + Command + L</td><td>整理下载内容时常用。</td></tr>
+        <tr class="normal"><td>55</td><td><span class="badge">一般</span></td><td class="category">Finder 跳转</td><td>桌面</td><td>打开 Desktop 文件夹。</td><td class="combo">Shift + Command + D</td><td>不是“显示桌面”。</td></tr>
+        <tr class="normal"><td>56</td><td><span class="badge">一般</span></td><td class="category">Finder 跳转</td><td>个人文件夹</td><td>打开用户主目录。</td><td class="combo">Shift + Command + H</td><td>也就是 /Users/你的用户名。</td></tr>
+        <tr class="normal"><td>57</td><td><span class="badge">一般</span></td><td class="category">Finder 跳转</td><td>应用程序</td><td>打开 Applications 文件夹。</td><td class="combo">Shift + Command + A</td><td>找 App 或拖到废纸篓卸载时常用。</td></tr>
+        <tr class="normal"><td>58</td><td><span class="badge">一般</span></td><td class="category">Finder 跳转</td><td>实用工具</td><td>打开 Utilities 文件夹。</td><td class="combo">Shift + Command + U</td><td>终端、磁盘工具、活动监视器在这里。</td></tr>
+        <tr class="normal"><td>59</td><td><span class="badge">一般</span></td><td class="category">Finder 跳转</td><td>AirDrop</td><td>打开 AirDrop 窗口。</td><td class="combo">Shift + Command + R</td><td>仅 Finder 前台时适用。</td></tr>
+        <tr class="normal"><td>60</td><td><span class="badge">一般</span></td><td class="category">Finder 跳转</td><td>连接服务器</td><td>连接 SMB、AFP、WebDAV 等网络位置。</td><td class="combo">Command + K</td><td>局域网共享文件夹常用。</td></tr>
+        <tr class="common"><td>61</td><td><span class="badge">常用</span></td><td class="category">Finder 视图</td><td>显示隐藏文件</td><td>切换显示 . 开头的隐藏文件。</td><td class="combo">Shift + Command + .</td><td>排查配置文件时很常用。</td></tr>
+        <tr class="normal"><td>62</td><td><span class="badge">一般</span></td><td class="category">Finder 视图</td><td>图标视图</td><td>以图标方式查看文件。</td><td class="combo">Command + 1</td><td>Finder 前台时适用。</td></tr>
+        <tr class="normal"><td>63</td><td><span class="badge">一般</span></td><td class="category">Finder 视图</td><td>列表视图</td><td>以列表方式查看文件。</td><td class="combo">Command + 2</td><td>适合按大小、日期排序。</td></tr>
+        <tr class="normal"><td>64</td><td><span class="badge">一般</span></td><td class="category">Finder 视图</td><td>分栏视图</td><td>以层级分栏方式浏览目录。</td><td class="combo">Command + 3</td><td>浏览深层文件夹很方便。</td></tr>
+        <tr class="normal"><td>65</td><td><span class="badge">一般</span></td><td class="category">Finder 视图</td><td>画廊视图</td><td>大图预览文件。</td><td class="combo">Command + 4</td><td>适合图片、PDF、视频。</td></tr>
+        <tr class="normal"><td>66</td><td><span class="badge">一般</span></td><td class="category">Finder 视图</td><td>显示路径栏</td><td>切换 Finder 底部路径栏。</td><td class="combo">Option + Command + P</td><td>看文件所在层级很有用。</td></tr>
+        <tr class="normal"><td>67</td><td><span class="badge">一般</span></td><td class="category">Finder 视图</td><td>显示边栏</td><td>切换 Finder 左侧边栏。</td><td class="combo">Option + Command + S</td><td>边栏消失时可用。</td></tr>
+        <tr class="normal"><td>68</td><td><span class="badge">一般</span></td><td class="category">Finder 视图</td><td>显示状态栏</td><td>切换 Finder 底部状态栏。</td><td class="combo">Command + /</td><td>可查看剩余空间、项目数量。</td></tr>
+        <tr class="normal"><td>69</td><td><span class="badge">一般</span></td><td class="category">Finder 视图</td><td>显示预览面板</td><td>切换右侧预览面板。</td><td class="combo">Shift + Command + P</td><td>列表视图中查看文件信息很方便。</td></tr>
+        <tr class="normal"><td>70</td><td><span class="badge">一般</span></td><td class="category">Finder 视图</td><td>显示视图选项</td><td>打开当前文件夹的视图设置。</td><td class="combo">Command + J</td><td>可改图标大小、排序、背景等。</td></tr>
+        <tr class="normal"><td>71</td><td><span class="badge">一般</span></td><td class="category">Finder 文件</td><td>推出磁盘</td><td>推出外接磁盘、镜像或网络卷。</td><td class="combo">Command + E</td><td>拔移动硬盘前建议先推出。</td></tr>
+
+        <tr class="common"><td>72</td><td><span class="badge">常用</span></td><td class="category">文本编辑</td><td>行首/行尾</td><td>把光标移到当前行开头或结尾。</td><td class="combo">Command + Left Arrow / Command + Right Arrow</td><td>在多数文本框、编辑器中可用。</td></tr>
+        <tr class="common"><td>73</td><td><span class="badge">常用</span></td><td class="category">文本编辑</td><td>文档开头/结尾</td><td>把光标移到文档开头或末尾。</td><td class="combo">Command + Up Arrow / Command + Down Arrow</td><td>长文档中很有用。</td></tr>
+        <tr class="common"><td>74</td><td><span class="badge">常用</span></td><td class="category">文本编辑</td><td>按词移动</td><td>按单词/词段移动光标。</td><td class="combo">Option + Left Arrow / Option + Right Arrow</td><td>中文输入场景下按词段效果取决于 App。</td></tr>
+        <tr class="normal"><td>75</td><td><span class="badge">一般</span></td><td class="category">文本编辑</td><td>选择到行首/行尾</td><td>从光标处选到当前行开头或结尾。</td><td class="combo">Shift + Command + Left Arrow / Shift + Command + Right Arrow</td><td>编辑标题、代码、表格文本时好用。</td></tr>
+        <tr class="normal"><td>76</td><td><span class="badge">一般</span></td><td class="category">文本编辑</td><td>选择到文档开头/结尾</td><td>从光标处选到全文开头或末尾。</td><td class="combo">Shift + Command + Up Arrow / Shift + Command + Down Arrow</td><td>适合批量选择长段落。</td></tr>
+        <tr class="common"><td>77</td><td><span class="badge">常用</span></td><td class="category">文本编辑</td><td>选择上/下一个词</td><td>按词扩展选择范围。</td><td class="combo">Option + Shift + Left Arrow / Option + Shift + Right Arrow</td><td>比逐字选择快很多。</td></tr>
+        <tr class="common"><td>78</td><td><span class="badge">常用</span></td><td class="category">文本编辑</td><td>向前删除</td><td>删除光标右侧字符。</td><td class="combo">Fn key + Delete</td><td>相当于 Windows 的 Delete 键。</td></tr>
+        <tr class="common"><td>79</td><td><span class="badge">常用</span></td><td class="category">文本编辑</td><td>删除前一个词</td><td>快速删除光标左侧一个词。</td><td class="combo">Option + Delete</td><td>在浏览器地址栏和输入框很实用。</td></tr>
+        <tr class="normal"><td>80</td><td><span class="badge">一般</span></td><td class="category">文本编辑</td><td>Emacs 风格行首</td><td>移到当前行或段落开头。</td><td class="combo">Control + A</td><td>很多原生文本框支持。</td></tr>
+        <tr class="normal"><td>81</td><td><span class="badge">一般</span></td><td class="category">文本编辑</td><td>Emacs 风格行尾</td><td>移到当前行或段落结尾。</td><td class="combo">Control + E</td><td>终端和文本框都常见。</td></tr>
+        <tr class="normal"><td>82</td><td><span class="badge">一般</span></td><td class="category">文本编辑</td><td>向前/向后一个字符</td><td>不用方向键移动光标。</td><td class="combo">Control + F / Control + B</td><td>F = forward，B = backward。</td></tr>
+        <tr class="normal"><td>83</td><td><span class="badge">一般</span></td><td class="category">文本编辑</td><td>上一行/下一行</td><td>不用方向键上下移动光标。</td><td class="combo">Control + P / Control + N</td><td>P = previous，N = next。</td></tr>
+        <tr class="common"><td>84</td><td><span class="badge">常用</span></td><td class="category">文本编辑</td><td>加粗</td><td>给选中文字加粗或取消加粗。</td><td class="combo">Command + B</td><td>文档、邮件、富文本编辑器常用。</td></tr>
+        <tr class="normal"><td>85</td><td><span class="badge">一般</span></td><td class="category">文本编辑</td><td>斜体</td><td>给选中文字设置斜体。</td><td class="combo">Command + I</td><td>在 Finder 中 Command + I 是显示简介。</td></tr>
+        <tr class="normal"><td>86</td><td><span class="badge">一般</span></td><td class="category">文本编辑</td><td>下划线</td><td>给选中文字设置下划线。</td><td class="combo">Command + U</td><td>部分网页编辑器可能改作插入链接。</td></tr>
+        <tr class="normal"><td>87</td><td><span class="badge">一般</span></td><td class="category">文本编辑</td><td>左对齐</td><td>把段落左对齐。</td><td class="combo">Command + {</td><td>在 Pages、TextEdit 等富文本 App 中常见。</td></tr>
+        <tr class="normal"><td>88</td><td><span class="badge">一般</span></td><td class="category">文本编辑</td><td>右对齐</td><td>把段落右对齐。</td><td class="combo">Command + }</td><td>不同键盘布局输入花括号方式可能不同。</td></tr>
+        <tr class="normal"><td>89</td><td><span class="badge">一般</span></td><td class="category">文本编辑</td><td>居中</td><td>把段落居中。</td><td class="combo">Shift + Command + |</td><td>富文本编辑场景。</td></tr>
+        <tr class="normal"><td>90</td><td><span class="badge">一般</span></td><td class="category">文本编辑</td><td>复制样式</td><td>复制所选文字或对象的格式。</td><td class="combo">Option + Command + C</td><td>在支持格式的 App 中有效；Finder 中是复制路径。</td></tr>
+        <tr class="normal"><td>91</td><td><span class="badge">一般</span></td><td class="category">文本编辑</td><td>粘贴样式</td><td>把复制的格式应用到选择内容。</td><td class="combo">Option + Command + V</td><td>在 Finder 中是移动文件，注意当前 App。</td></tr>
+
+        <tr class="common"><td>92</td><td><span class="badge">常用</span></td><td class="category">截图录屏</td><td>全屏截图</td><td>截取整个屏幕。</td><td class="combo">Shift + Command + 3</td><td>默认保存到桌面或你设置的位置。</td></tr>
+        <tr class="common"><td>93</td><td><span class="badge">常用</span></td><td class="category">截图录屏</td><td>区域截图</td><td>拖拽选择屏幕区域截图。</td><td class="combo">Shift + Command + 4</td><td>按 Space Bar 可切换为窗口截图。</td></tr>
+        <tr class="common"><td>94</td><td><span class="badge">常用</span></td><td class="category">截图录屏</td><td>截图与录屏工具</td><td>打开截图工具栏，可录屏、改保存位置、设置计时。</td><td class="combo">Shift + Command + 5</td><td>macOS Mojave 及以后可用。</td></tr>
+        <tr class="normal"><td>95</td><td><span class="badge">一般</span></td><td class="category">截图录屏</td><td>Touch Bar 截图</td><td>截取 Touch Bar 当前显示内容。</td><td class="combo">Shift + Command + 6</td><td>仅带 Touch Bar 的 MacBook Pro 有意义。</td></tr>
+        <tr class="normal"><td>96</td><td><span class="badge">一般</span></td><td class="category">截图录屏</td><td>截图到剪贴板</td><td>截图后不保存文件，直接复制。</td><td class="combo">在截图快捷键中加 Control</td><td>例如 Control + Shift + Command + 4 选区截图到剪贴板。</td></tr>
+        <tr class="normal"><td>97</td><td><span class="badge">一般</span></td><td class="category">截图录屏</td><td>取消截图</td><td>退出截图选择状态。</td><td class="combo">Escape</td><td>拖选区域前后都可取消。</td></tr>
+
+        <tr class="common"><td>98</td><td><span class="badge">常用</span></td><td class="category">Chrome 浏览器</td><td>刷新页面</td><td>重新加载当前网页。</td><td class="combo">Command + R</td><td>普通刷新，日常最常用。</td></tr>
+        <tr class="common"><td>99</td><td><span class="badge">常用</span></td><td class="category">Chrome 浏览器</td><td>强制刷新</td><td>忽略缓存重新加载页面。</td><td class="combo">Shift + Command + R</td><td>网页样式/脚本没更新时使用。</td></tr>
+        <tr class="common"><td>100</td><td><span class="badge">常用</span></td><td class="category">Chrome 浏览器</td><td>新建标签页</td><td>打开新标签并跳过去。</td><td class="combo">Command + T</td><td>Finder 里也是新建标签相关操作。</td></tr>
+        <tr class="common"><td>101</td><td><span class="badge">常用</span></td><td class="category">Chrome 浏览器</td><td>关闭当前标签</td><td>关闭当前网页标签。</td><td class="combo">Command + W</td><td>最后一个标签关闭时可能关闭窗口。</td></tr>
+        <tr class="common"><td>102</td><td><span class="badge">常用</span></td><td class="category">Chrome 浏览器</td><td>恢复关闭的标签</td><td>按关闭顺序恢复标签页。</td><td class="combo">Shift + Command + T</td><td>误关网页时很好用。</td></tr>
+        <tr class="common"><td>103</td><td><span class="badge">常用</span></td><td class="category">Chrome 浏览器</td><td>地址栏</td><td>聚焦地址栏，输入网址或搜索词。</td><td class="combo">Command + L</td><td>输入后按 Return 打开。</td></tr>
+        <tr class="common"><td>104</td><td><span class="badge">常用</span></td><td class="category">Chrome 浏览器</td><td>页面查找</td><td>在网页中查找文字。</td><td class="combo">Command + F</td><td>按 Command + G 跳到下一处。</td></tr>
+        <tr class="common"><td>105</td><td><span class="badge">常用</span></td><td class="category">Chrome 浏览器</td><td>切到下一个标签</td><td>在标签页之间向右切换。</td><td class="combo">Option + Command + Right Arrow</td><td>也可用 Control + Tab，取决于键盘设置。</td></tr>
+        <tr class="common"><td>106</td><td><span class="badge">常用</span></td><td class="category">Chrome 浏览器</td><td>切到上一个标签</td><td>在标签页之间向左切换。</td><td class="combo">Option + Command + Left Arrow</td><td>多标签工作时很高频。</td></tr>
+        <tr class="common"><td>107</td><td><span class="badge">常用</span></td><td class="category">Chrome 浏览器</td><td>切到指定标签</td><td>跳到第 1 到第 8 个标签页。</td><td class="combo">Command + 1 到 Command + 8</td><td>Command + 9 跳到最后一个标签。</td></tr>
+        <tr class="common"><td>108</td><td><span class="badge">常用</span></td><td class="category">Chrome 浏览器</td><td>最后一个标签</td><td>跳到最右侧标签页。</td><td class="combo">Command + 9</td><td>固定标签很多时实用。</td></tr>
+        <tr class="common"><td>109</td><td><span class="badge">常用</span></td><td class="category">Chrome 浏览器</td><td>返回/前进</td><td>在当前标签历史中后退或前进。</td><td class="combo">Command + [ / Command + ]</td><td>也可用 Command + Left Arrow / Command + Right Arrow。</td></tr>
+        <tr class="common"><td>110</td><td><span class="badge">常用</span></td><td class="category">Chrome 浏览器</td><td>新建无痕窗口</td><td>打开无痕浏览窗口。</td><td class="combo">Shift + Command + N</td><td>Finder 中同组合是新建文件夹，取决于当前 App。</td></tr>
+        <tr class="normal"><td>111</td><td><span class="badge">一般</span></td><td class="category">Chrome 浏览器</td><td>新建窗口</td><td>打开新的 Chrome 窗口。</td><td class="combo">Command + N</td><td>不会关闭当前窗口。</td></tr>
+        <tr class="normal"><td>112</td><td><span class="badge">一般</span></td><td class="category">Chrome 浏览器</td><td>关闭窗口</td><td>关闭当前 Chrome 窗口。</td><td class="combo">Shift + Command + W</td><td>窗口内多个标签会一起关闭。</td></tr>
+        <tr class="normal"><td>113</td><td><span class="badge">一般</span></td><td class="category">Chrome 浏览器</td><td>下载内容</td><td>打开下载列表。</td><td class="combo">Shift + Command + J</td><td>排查下载文件时常用。</td></tr>
+        <tr class="normal"><td>114</td><td><span class="badge">一般</span></td><td class="category">Chrome 浏览器</td><td>历史记录</td><td>打开历史记录页面。</td><td class="combo">Command + Y</td><td>找刚访问过的页面。</td></tr>
+        <tr class="normal"><td>115</td><td><span class="badge">一般</span></td><td class="category">Chrome 浏览器</td><td>收藏当前页</td><td>把当前网页加入书签。</td><td class="combo">Command + D</td><td>在 Finder 中 Command + D 是复制文件。</td></tr>
+        <tr class="normal"><td>116</td><td><span class="badge">一般</span></td><td class="category">Chrome 浏览器</td><td>显示书签栏</td><td>显示或隐藏书签栏。</td><td class="combo">Shift + Command + B</td><td>页面空间紧张时可隐藏。</td></tr>
+        <tr class="normal"><td>117</td><td><span class="badge">一般</span></td><td class="category">Chrome 浏览器</td><td>开发者工具</td><td>打开 DevTools。</td><td class="combo">Option + Command + I</td><td>前端调试、查看网络请求时使用。</td></tr>
+        <tr class="normal"><td>118</td><td><span class="badge">一般</span></td><td class="category">Chrome 浏览器</td><td>JavaScript 控制台</td><td>直接打开 Console。</td><td class="combo">Option + Command + J</td><td>开发调试场景。</td></tr>
+        <tr class="normal"><td>119</td><td><span class="badge">一般</span></td><td class="category">Chrome 浏览器</td><td>清除浏览数据</td><td>打开清除浏览记录、缓存、Cookie 的页面。</td><td class="combo">Shift + Command + Delete</td><td>清 Cookie 前确认登录状态。</td></tr>
+        <tr class="common"><td>120</td><td><span class="badge">常用</span></td><td class="category">Chrome 浏览器</td><td>缩放页面</td><td>放大、缩小、恢复网页比例。</td><td class="combo">Command + + / Command + - / Command + 0</td><td>适合网页字太小或排版异常时。</td></tr>
+        <tr class="common"><td>121</td><td><span class="badge">常用</span></td><td class="category">Chrome 浏览器</td><td>向下/向上翻页</td><td>滚动一屏网页。</td><td class="combo">Space Bar / Shift + Space Bar</td><td>阅读长网页时非常顺手。</td></tr>
+
+        <tr class="normal"><td>122</td><td><span class="badge">一般</span></td><td class="category">Touch Bar 与功能键</td><td>显示 F1-F12</td><td>在 Touch Bar 上显示标准功能键。</td><td class="combo">按住 Fn key</td><td>具体取决于“系统设置 → 键盘”中的 Fn key 设置。</td></tr>
+        <tr class="normal"><td>123</td><td><span class="badge">一般</span></td><td class="category">Touch Bar 与功能键</td><td>精细调节音量</td><td>以更小步进调节系统音量。</td><td class="combo">Option + Shift + Volume Up Button / Volume Down Button</td><td>Touch Bar Control Strip 显示音量按钮时可用；外接音频设备可能不支持。</td></tr>
+        <tr class="normal"><td>124</td><td><span class="badge">一般</span></td><td class="category">Touch Bar 与功能键</td><td>打开声音设置</td><td>快速进入声音设置。</td><td class="combo">Option + Volume Up Button / Volume Down Button</td><td>音量按钮可能在 Touch Bar Control Strip 中。</td></tr>
+        <tr class="normal"><td>125</td><td><span class="badge">一般</span></td><td class="category">Touch Bar 与功能键</td><td>精细调节亮度</td><td>以更小步进调节屏幕亮度。</td><td class="combo">Option + Shift + Brightness Up Button / Brightness Down Button</td><td>Touch Bar 上需显示亮度控制。</td></tr>
+        <tr class="normal"><td>126</td><td><span class="badge">一般</span></td><td class="category">Touch Bar 与功能键</td><td>打开显示器设置</td><td>快速进入显示器设置。</td><td class="combo">Option + Brightness Up Button / Brightness Down Button</td><td>外接显示器时也常用。</td></tr>
+        <tr class="normal"><td>127</td><td><span class="badge">一般</span></td><td class="category">Touch Bar 与功能键</td><td>快速备忘录</td><td>新建 Quick Note。</td><td class="combo">Fn key + Q</td><td>需要系统支持 Quick Note。</td></tr>
+        <tr class="normal"><td>128</td><td><span class="badge">一般</span></td><td class="category">Touch Bar 与功能键</td><td>显示控制中心</td><td>打开或隐藏控制中心。</td><td class="combo">Fn key + C</td><td>在部分系统快捷键设置中可调整。</td></tr>
+        <tr class="normal"><td>129</td><td><span class="badge">一般</span></td><td class="category">Touch Bar 与功能键</td><td>显示 Dock</td><td>显示或隐藏 Dock。</td><td class="combo">Fn key + A</td><td>和 Option + Command + D 都可用于 Dock 显示相关操作。</td></tr>
+
+        <tr class="common"><td>130</td><td><span class="badge">常用</span></td><td class="category">输入法</td><td>切换输入法</td><td>在中英文或多个输入源之间切换。</td><td class="combo">Control + Space Bar</td><td>如果被 Spotlight 或其他工具占用，可在键盘快捷键里改。</td></tr>
+        <tr class="normal"><td>131</td><td><span class="badge">一般</span></td><td class="category">输入法</td><td>下一个输入源</td><td>切到下一个输入法。</td><td class="combo">Control + Option + Space Bar</td><td>多语言输入源用户更常用。</td></tr>
+        <tr class="normal"><td>132</td><td><span class="badge">一般</span></td><td class="category">输入法</td><td>Caps Lock 中英文</td><td>在部分中文输入法中切换中英文。</td><td class="combo">Caps Lock</td><td>取决于输入法设置；长按可能开启大写锁定。</td></tr>
+        <tr class="normal"><td>133</td><td><span class="badge">一般</span></td><td class="category">输入法</td><td>听写</td><td>启动系统听写。</td><td class="combo">连按 Fn key 两次</td><td>需在“系统设置 → 键盘 → 听写”启用，快捷键可改。</td></tr>
+
+        <tr class="normal"><td>134</td><td><span class="badge">一般</span></td><td class="category">辅助功能</td><td>辅助功能快捷键</td><td>打开辅助功能快捷面板。</td><td class="combo">Option + Command + F5 或连按 Touch ID 三次</td><td>可快速开关缩放、VoiceOver 等。</td></tr>
+        <tr class="normal"><td>135</td><td><span class="badge">一般</span></td><td class="category">辅助功能</td><td>VoiceOver</td><td>开关屏幕朗读。</td><td class="combo">Command + F5</td><td>Touch Bar 机型可能需要 Fn key 显示 F5。</td></tr>
+        <tr class="normal"><td>136</td><td><span class="badge">一般</span></td><td class="category">辅助功能</td><td>屏幕缩放开关</td><td>开关系统缩放功能。</td><td class="combo">Option + Command + 8</td><td>需在辅助功能缩放设置中启用快捷键。</td></tr>
+        <tr class="normal"><td>137</td><td><span class="badge">一般</span></td><td class="category">辅助功能</td><td>放大/缩小</td><td>调节系统缩放比例。</td><td class="combo">Option + Command + = / Option + Command + -</td><td>需先启用缩放快捷键。</td></tr>
+        <tr class="normal"><td>138</td><td><span class="badge">一般</span></td><td class="category">辅助功能</td><td>反转颜色</td><td>开关颜色反转。</td><td class="combo">Control + Option + Command + 8</td><td>需在“键盘快捷键 → 辅助功能”中启用。</td></tr>
+        <tr class="normal"><td>139</td><td><span class="badge">一般</span></td><td class="category">辅助功能</td><td>减少/增加对比度</td><td>调整辅助显示对比度。</td><td class="combo">Control + Option + Command + , / .</td><td>需先启用相关辅助功能快捷键。</td></tr>
+        <tr class="normal"><td>140</td><td><span class="badge">一般</span></td><td class="category">键盘焦点</td><td>聚焦菜单栏</td><td>不用鼠标操作菜单栏。</td><td class="combo">Control + F2 或 Fn key + Control + F2</td><td>某些键盘需先启用键盘导航。</td></tr>
+        <tr class="normal"><td>141</td><td><span class="badge">一般</span></td><td class="category">键盘焦点</td><td>聚焦 Dock</td><td>用键盘选择 Dock 图标。</td><td class="combo">Control + F3 或 Fn key + Control + F3</td><td>方向键选择，Return 打开。</td></tr>
+        <tr class="normal"><td>142</td><td><span class="badge">一般</span></td><td class="category">键盘焦点</td><td>聚焦窗口/工具栏</td><td>在窗口、工具栏、面板间移动焦点。</td><td class="combo">Control + F4 / Control + F5 / Control + F6</td><td>Touch Bar 机型可能需要加 Fn key。</td></tr>
+        <tr class="common"><td>143</td><td><span class="badge">常用</span></td><td class="category">键盘焦点</td><td>控件间移动</td><td>在表单、按钮、列表间移动焦点。</td><td class="combo">Tab / Shift + Tab</td><td>完整键盘控制开启后范围更广。</td></tr>
+
+        <tr class="normal"><td>144</td><td><span class="badge">一般</span></td><td class="category">电源与会话</td><td>睡眠</td><td>让 Mac 进入睡眠。</td><td class="combo">Option + Command + Power/Touch ID Button</td><td>可能需要稍按住；保存工作后再用。</td></tr>
+        <tr class="normal"><td>145</td><td><span class="badge">一般</span></td><td class="category">电源与会话</td><td>重启</td><td>立即重启 Mac。</td><td class="combo">Control + Command + Power/Touch ID Button</td><td>可能丢失未保存内容，谨慎使用。</td></tr>
+        <tr class="advanced"><td>146</td><td><span class="badge">进阶</span></td><td class="category">电源与会话</td><td>关机</td><td>退出所有 App 并关机。</td><td class="combo">Control + Option + Command + Power/Touch ID Button</td><td>高风险快捷键，确认文档已保存。</td></tr>
+        <tr class="normal"><td>147</td><td><span class="badge">一般</span></td><td class="category">电源与会话</td><td>退出登录</td><td>退出当前用户登录。</td><td class="combo">Shift + Command + Q</td><td>会弹确认窗口。</td></tr>
+        <tr class="advanced"><td>148</td><td><span class="badge">进阶</span></td><td class="category">电源与会话</td><td>立即退出登录</td><td>不确认直接退出当前用户。</td><td class="combo">Option + Shift + Command + Q</td><td>谨慎使用，未保存内容可能丢失。</td></tr>
+
+        <tr class="common"><td>149</td><td><span class="badge">常用</span></td><td class="category">终端</td><td>中断命令</td><td>停止正在运行的前台命令。</td><td class="combo">Control + C</td><td>命令行最常用的救急键。</td></tr>
+        <tr class="normal"><td>150</td><td><span class="badge">一般</span></td><td class="category">终端</td><td>挂起命令</td><td>暂停前台进程。</td><td class="combo">Control + Z</td><td>可用 fg 恢复，或 jobs 查看。</td></tr>
+        <tr class="common"><td>151</td><td><span class="badge">常用</span></td><td class="category">终端</td><td>清屏</td><td>清理终端当前显示区域。</td><td class="combo">Control + L</td><td>等价于很多 shell 中的 clear 效果。</td></tr>
+        <tr class="normal"><td>152</td><td><span class="badge">一般</span></td><td class="category">终端</td><td>清除回滚</td><td>清空终端滚动历史。</td><td class="combo">Command + K</td><td>macOS Terminal/iTerm 常见；不可恢复回滚内容。</td></tr>
+        <tr class="common"><td>153</td><td><span class="badge">常用</span></td><td class="category">终端</td><td>命令行行首/行尾</td><td>移动到当前命令开头或结尾。</td><td class="combo">Control + A / Control + E</td><td>shell 编辑非常高频。</td></tr>
+        <tr class="common"><td>154</td><td><span class="badge">常用</span></td><td class="category">终端</td><td>删除前一个词</td><td>删除命令行里光标左侧一个词。</td><td class="combo">Option + Delete</td><td>长命令改参数时很省时间。</td></tr>
+        <tr class="normal"><td>155</td><td><span class="badge">一般</span></td><td class="category">终端</td><td>新建终端标签</td><td>打开新的终端标签页。</td><td class="combo">Command + T</td><td>Terminal、iTerm 都常见。</td></tr>
+        <tr class="normal"><td>156</td><td><span class="badge">一般</span></td><td class="category">终端</td><td>新建终端窗口</td><td>打开新的终端窗口。</td><td class="combo">Command + N</td><td>适合分开不同任务。</td></tr>
+        <tr class="normal"><td>157</td><td><span class="badge">一般</span></td><td class="category">终端</td><td>关闭终端标签/窗口</td><td>关闭当前终端标签或窗口。</td><td class="combo">Command + W</td><td>有运行中进程时会提示。</td></tr>
+
+        <tr class="advanced"><td>158</td><td><span class="badge">进阶</span></td><td class="category">Intel 开机</td><td>macOS 恢复</td><td>从内置恢复系统启动。</td><td class="combo">开机时按住 Command + R</td><td>你的 MacBookPro15,2 是 Intel Mac；按电源后立即按住。</td></tr>
+        <tr class="advanced"><td>159</td><td><span class="badge">进阶</span></td><td class="category">Intel 开机</td><td>互联网恢复</td><td>通过网络进入恢复系统。</td><td class="combo">开机时按住 Option + Command + R</td><td>通常安装兼容的较新 macOS。</td></tr>
+        <tr class="advanced"><td>160</td><td><span class="badge">进阶</span></td><td class="category">Intel 开机</td><td>原始互联网恢复</td><td>通过网络进入另一种恢复版本。</td><td class="combo">开机时按住 Shift + Option + Command + R</td><td>版本选择由 Apple 恢复逻辑决定。</td></tr>
+        <tr class="advanced"><td>161</td><td><span class="badge">进阶</span></td><td class="category">Intel 开机</td><td>启动管理器</td><td>选择其他启动磁盘或外接启动盘。</td><td class="combo">开机时按住 Option</td><td>Boot Camp、外接系统盘场景。</td></tr>
+        <tr class="advanced"><td>162</td><td><span class="badge">进阶</span></td><td class="category">Intel 开机</td><td>安全模式</td><td>以安全模式启动排查问题。</td><td class="combo">开机时按住 Shift</td><td>启动会更慢，登录后可检查第三方扩展问题。</td></tr>
+        <tr class="advanced"><td>163</td><td><span class="badge">进阶</span></td><td class="category">Intel 开机</td><td>Apple 诊断</td><td>运行硬件诊断。</td><td class="combo">开机时按住 D</td><td>也可用 Option + D 通过互联网诊断。</td></tr>
+        <tr class="advanced"><td>164</td><td><span class="badge">进阶</span></td><td class="category">Intel 开机</td><td>重置 NVRAM/PRAM</td><td>重置部分启动磁盘、音量、显示等低层设置。</td><td class="combo">开机时按住 Option + Command + P + R</td><td>仅 Intel Mac；有固件密码时可能不可用。</td></tr>
+        <tr class="advanced"><td>165</td><td><span class="badge">进阶</span></td><td class="category">Intel 开机</td><td>目标磁盘模式</td><td>把这台 Mac 作为外接磁盘连接另一台 Mac。</td><td class="combo">开机时按住 T</td><td>需要合适的数据线和系统支持。</td></tr>
+        <tr class="advanced"><td>166</td><td><span class="badge">进阶</span></td><td class="category">Intel 开机</td><td>详细启动模式</td><td>显示启动日志。</td><td class="combo">开机时按住 Command + V</td><td>排查启动问题时使用。</td></tr>
+        <tr class="advanced"><td>167</td><td><span class="badge">进阶</span></td><td class="category">Intel 开机</td><td>单用户模式</td><td>进入单用户模式。</td><td class="combo">开机时按住 Command + S</td><td>macOS Mojave 或更高版本中已禁用。</td></tr>
+        <tr class="common"><td>168</td><td><span class="badge">常用</span></td><td class="category">通用编辑</td><td>关闭查找栏</td><td>关闭查找、弹窗、菜单或当前轻量级面板。</td><td class="combo">Escape</td><td>在全屏视频、截图选择、菜单打开时也常用。</td></tr>
+        <tr class="common"><td>169</td><td><span class="badge">常用</span></td><td class="category">通用编辑</td><td>确认/换行</td><td>确认当前输入、打开选中按钮，或在文本中换行。</td><td class="combo">Return</td><td>在聊天软件中 Return 可能发送消息；换行通常用 Shift + Return 或 Option + Return。</td></tr>
+        <tr class="normal"><td>170</td><td><span class="badge">一般</span></td><td class="category">通用编辑</td><td>打开菜单栏搜索</td><td>搜索当前 App 菜单命令。</td><td class="combo">Shift + Command + /</td><td>等同于打开“帮助”菜单搜索，适合找不到菜单命令时。</td></tr>
+        <tr class="normal"><td>171</td><td><span class="badge">一般</span></td><td class="category">通用编辑</td><td>显示拼写与语法</td><td>打开拼写和语法检查窗口。</td><td class="combo">Command + :</td><td>在 Pages、TextEdit、邮件等文字场景常用。</td></tr>
+        <tr class="normal"><td>172</td><td><span class="badge">一般</span></td><td class="category">通用编辑</td><td>检查拼写</td><td>跳到下一个拼写错误。</td><td class="combo">Command + ;</td><td>需当前 App 支持系统拼写检查。</td></tr>
+        <tr class="normal"><td>173</td><td><span class="badge">一般</span></td><td class="category">通用编辑</td><td>特殊字符查看器</td><td>打开字符查看器或表情符号面板。</td><td class="combo">Control + Command + Space Bar</td><td>和“表情与符号”相同，补充为按键名称版本。</td></tr>
+        <tr class="common"><td>174</td><td><span class="badge">常用</span></td><td class="category">窗口与标签</td><td>新建标签页</td><td>在支持标签页的 App 中新建标签。</td><td class="combo">Command + T</td><td>Chrome、Safari、Finder、Terminal 都常用。</td></tr>
+        <tr class="common"><td>175</td><td><span class="badge">常用</span></td><td class="category">窗口与标签</td><td>关闭标签页/窗口</td><td>关闭当前标签页或窗口。</td><td class="combo">Command + W</td><td>浏览器中通常关闭标签页，普通 App 中关闭窗口。</td></tr>
+        <tr class="common"><td>176</td><td><span class="badge">常用</span></td><td class="category">窗口与标签</td><td>重新打开关闭的标签页</td><td>恢复刚刚关闭的标签页或窗口。</td><td class="combo">Shift + Command + T</td><td>浏览器、Finder 标签页中常用。</td></tr>
+        <tr class="normal"><td>177</td><td><span class="badge">一般</span></td><td class="category">窗口与标签</td><td>显示所有标签页</td><td>打开标签页总览。</td><td class="combo">Shift + Command + \</td><td>Safari/Finder 等支持标签概览的 App 有效。</td></tr>
+        <tr class="normal"><td>178</td><td><span class="badge">一般</span></td><td class="category">窗口与标签</td><td>合并所有窗口</td><td>把当前 App 的多个窗口合并为标签页。</td><td class="combo">通过菜单：窗口 → 合并所有窗口</td><td>不是所有 App 都支持；无固定系统级默认组合。</td></tr>
+        <tr class="normal"><td>179</td><td><span class="badge">一般</span></td><td class="category">窗口与标签</td><td>切换下一个标签页</td><td>跳到右侧标签页。</td><td class="combo">Control + Tab</td><td>Chrome/Safari/Finder 常见，也可用 Control + Shift + Tab 返回。</td></tr>
+        <tr class="normal"><td>180</td><td><span class="badge">一般</span></td><td class="category">窗口与标签</td><td>切换上一个标签页</td><td>跳到左侧标签页。</td><td class="combo">Control + Shift + Tab</td><td>浏览器标签页很多时很实用。</td></tr>
+        <tr class="normal"><td>181</td><td><span class="badge">一般</span></td><td class="category">窗口与标签</td><td>移动窗口到左侧屏幕</td><td>把窗口移到左边显示器。</td><td class="combo">通过菜单：窗口 → 移到左侧显示器</td><td>快捷键依系统和 App 支持而异。</td></tr>
+        <tr class="normal"><td>182</td><td><span class="badge">一般</span></td><td class="category">窗口与标签</td><td>移动窗口到右侧屏幕</td><td>把窗口移到右边显示器。</td><td class="combo">通过菜单：窗口 → 移到右侧显示器</td><td>多显示器工作流可用菜单完成。</td></tr>
+        <tr class="common"><td>183</td><td><span class="badge">常用</span></td><td class="category">Finder 选择</td><td>选择连续项目</td><td>在列表或图标中连续选择多个文件。</td><td class="combo">点击第一个项目，然后按住 Shift 点击最后一个项目</td><td>适合批量移动、删除、压缩。</td></tr>
+        <tr class="common"><td>184</td><td><span class="badge">常用</span></td><td class="category">Finder 选择</td><td>选择不连续项目</td><td>逐个增加或取消选择文件。</td><td class="combo">按住 Command 点击项目</td><td>适合从一堆文件里挑选几个。</td></tr>
+        <tr class="normal"><td>185</td><td><span class="badge">一般</span></td><td class="category">Finder 选择</td><td>反向取消单个选择</td><td>从已选文件中去掉某一项。</td><td class="combo">按住 Command 点击已选项目</td><td>避免重新选择一遍。</td></tr>
+        <tr class="normal"><td>186</td><td><span class="badge">一般</span></td><td class="category">Finder 文件</td><td>压缩项目</td><td>把选中文件打包成 zip。</td><td class="combo">Control + 点击 → 压缩</td><td>没有统一默认键盘组合；也可在 Finder“文件”菜单中操作。</td></tr>
+        <tr class="normal"><td>187</td><td><span class="badge">一般</span></td><td class="category">Finder 文件</td><td>显示原身</td><td>从 alias 或搜索结果打开原文件所在位置。</td><td class="combo">Command + R</td><td>Finder 搜索结果、替身文件时有用。</td></tr>
+        <tr class="normal"><td>188</td><td><span class="badge">一般</span></td><td class="category">Finder 文件</td><td>添加到边栏</td><td>把选中项目加入 Finder 边栏。</td><td class="combo">Control + Command + T</td><td>适合常用文件夹。</td></tr>
+        <tr class="normal"><td>189</td><td><span class="badge">一般</span></td><td class="category">Finder 文件</td><td>添加到 Dock</td><td>把选中项目加入 Dock。</td><td class="combo">Control + Shift + Command + T</td><td>通常用于 App、文件夹或文件。</td></tr>
+        <tr class="normal"><td>190</td><td><span class="badge">一般</span></td><td class="category">Finder 文件</td><td>弹出光盘/磁盘</td><td>推出选中的磁盘或宗卷。</td><td class="combo">Command + E</td><td>外接硬盘、安装镜像、网络卷常用。</td></tr>
+        <tr class="normal"><td>191</td><td><span class="badge">一般</span></td><td class="category">Finder 文件</td><td>打开隔空投送</td><td>打开 AirDrop。</td><td class="combo">Shift + Command + R</td><td>仅 Finder 前台时适用。</td></tr>
+        <tr class="normal"><td>192</td><td><span class="badge">一般</span></td><td class="category">Finder 文件</td><td>打开 iCloud Drive</td><td>进入 iCloud Drive。</td><td class="combo">Shift + Command + I</td><td>Finder 中常用。</td></tr>
+        <tr class="common"><td>193</td><td><span class="badge">常用</span></td><td class="category">Safari 浏览器</td><td>刷新页面</td><td>重新加载当前网页。</td><td class="combo">Command + R</td><td>Safari 与 Chrome 都是这个刷新组合。</td></tr>
+        <tr class="common"><td>194</td><td><span class="badge">常用</span></td><td class="category">Safari 浏览器</td><td>智能搜索栏</td><td>聚焦地址栏/搜索栏。</td><td class="combo">Command + L</td><td>输入网址或关键词后按 Return。</td></tr>
+        <tr class="common"><td>195</td><td><span class="badge">常用</span></td><td class="category">Safari 浏览器</td><td>阅读列表</td><td>显示或隐藏阅读列表侧边栏。</td><td class="combo">Shift + Command + L</td><td>Safari 专用。</td></tr>
+        <tr class="normal"><td>196</td><td><span class="badge">一般</span></td><td class="category">Safari 浏览器</td><td>显示侧边栏</td><td>显示或隐藏 Safari 侧边栏。</td><td class="combo">Shift + Command + L</td><td>不同 Safari 版本可能侧重阅读列表或侧边栏。</td></tr>
+        <tr class="normal"><td>197</td><td><span class="badge">一般</span></td><td class="category">Safari 浏览器</td><td>隐私浏览窗口</td><td>新建无痕/隐私浏览窗口。</td><td class="combo">Shift + Command + N</td><td>Chrome 同组合为新建无痕窗口。</td></tr>
+        <tr class="normal"><td>198</td><td><span class="badge">一般</span></td><td class="category">Safari 浏览器</td><td>显示下载</td><td>打开下载列表。</td><td class="combo">Option + Command + L</td><td>Safari 中查看下载进度。</td></tr>
+        <tr class="normal"><td>199</td><td><span class="badge">一般</span></td><td class="category">Safari 浏览器</td><td>添加书签</td><td>收藏当前网页。</td><td class="combo">Command + D</td><td>可选择书签文件夹。</td></tr>
+        <tr class="normal"><td>200</td><td><span class="badge">一般</span></td><td class="category">Safari 浏览器</td><td>放大/缩小网页</td><td>调整网页显示比例。</td><td class="combo">Command + + / Command + - / Command + 0</td><td>0 是恢复默认比例。</td></tr>
+        <tr class="common"><td>201</td><td><span class="badge">常用</span></td><td class="category">预览/PDF</td><td>放大/缩小</td><td>放大或缩小图片、PDF。</td><td class="combo">Command + + / Command + -</td><td>预览、PDF 阅读器常用。</td></tr>
+        <tr class="common"><td>202</td><td><span class="badge">常用</span></td><td class="category">预览/PDF</td><td>实际大小</td><td>以 100% 显示。</td><td class="combo">Command + 0</td><td>检查图片实际尺寸时有用。</td></tr>
+        <tr class="normal"><td>203</td><td><span class="badge">一般</span></td><td class="category">预览/PDF</td><td>适合窗口</td><td>让页面适配当前窗口。</td><td class="combo">Command + 9</td><td>预览 App 常用。</td></tr>
+        <tr class="normal"><td>204</td><td><span class="badge">一般</span></td><td class="category">预览/PDF</td><td>下一页/上一页</td><td>在 PDF 中翻页。</td><td class="combo">Down Arrow / Up Arrow</td><td>也可用 Space Bar 翻到下一屏。</td></tr>
+        <tr class="normal"><td>205</td><td><span class="badge">一般</span></td><td class="category">预览/PDF</td><td>第一页/最后一页</td><td>跳到 PDF 开头或末尾。</td><td class="combo">Fn key + Left Arrow / Fn key + Right Arrow</td><td>等同于 Home/End 的常见行为。</td></tr>
+        <tr class="normal"><td>206</td><td><span class="badge">一般</span></td><td class="category">预览/PDF</td><td>显示标记工具栏</td><td>显示批注、画笔、签名等工具。</td><td class="combo">Shift + Command + A</td><td>预览 App 中给图片/PDF 标注时常用。</td></tr>
+        <tr class="normal"><td>207</td><td><span class="badge">一般</span></td><td class="category">预览/PDF</td><td>旋转左/右</td><td>旋转图片或 PDF 页面。</td><td class="combo">Command + L / Command + R</td><td>预览 App 中有效；浏览器中 Command + R 是刷新。</td></tr>
+        <tr class="common"><td>208</td><td><span class="badge">常用</span></td><td class="category">邮件</td><td>新建邮件</td><td>撰写新邮件。</td><td class="combo">Command + N</td><td>Mail、Outlook、部分网页邮箱支持类似组合。</td></tr>
+        <tr class="common"><td>209</td><td><span class="badge">常用</span></td><td class="category">邮件</td><td>发送邮件</td><td>发送当前邮件。</td><td class="combo">Shift + Command + D</td><td>发送前确认收件人和附件。</td></tr>
+        <tr class="normal"><td>210</td><td><span class="badge">一般</span></td><td class="category">邮件</td><td>回复</td><td>回复当前邮件。</td><td class="combo">Command + R</td><td>在浏览器里 Command + R 是刷新，邮件 App 中是回复。</td></tr>
+        <tr class="normal"><td>211</td><td><span class="badge">一般</span></td><td class="category">邮件</td><td>全部回复</td><td>回复所有收件人。</td><td class="combo">Shift + Command + R</td><td>发送前确认是否真的需要全部回复。</td></tr>
+        <tr class="normal"><td>212</td><td><span class="badge">一般</span></td><td class="category">邮件</td><td>转发</td><td>转发当前邮件。</td><td class="combo">Shift + Command + F</td><td>不同邮件客户端可能不同。</td></tr>
+        <tr class="normal"><td>213</td><td><span class="badge">一般</span></td><td class="category">邮件</td><td>标记为垃圾邮件</td><td>把邮件移到垃圾邮件。</td><td class="combo">Shift + Command + J</td><td>Mail App 常见。</td></tr>
+        <tr class="common"><td>214</td><td><span class="badge">常用</span></td><td class="category">备忘录</td><td>新建备忘录</td><td>创建一条新备忘录。</td><td class="combo">Command + N</td><td>Apple Notes 常用。</td></tr>
+        <tr class="normal"><td>215</td><td><span class="badge">一般</span></td><td class="category">备忘录</td><td>新建文件夹</td><td>创建备忘录文件夹。</td><td class="combo">Shift + Command + N</td><td>当前焦点在备忘录 App 时适用。</td></tr>
+        <tr class="normal"><td>216</td><td><span class="badge">一般</span></td><td class="category">备忘录</td><td>插入清单</td><td>插入待办清单。</td><td class="combo">Shift + Command + L</td><td>Notes 中常用；Safari 中同组合可能是侧边栏。</td></tr>
+        <tr class="normal"><td>217</td><td><span class="badge">一般</span></td><td class="category">备忘录</td><td>固定备忘录</td><td>固定或取消固定当前备忘录。</td><td class="combo">Control + Command + P</td><td>版本和菜单设置可能影响可用性。</td></tr>
+        <tr class="normal"><td>218</td><td><span class="badge">一般</span></td><td class="category">备忘录</td><td>查找备忘录</td><td>搜索备忘录内容。</td><td class="combo">Option + Command + F</td><td>在 Notes 搜索框中查找全部备忘录。</td></tr>
+        <tr class="common"><td>219</td><td><span class="badge">常用</span></td><td class="category">日历</td><td>新建日程</td><td>创建新事件。</td><td class="combo">Command + N</td><td>Apple Calendar 常用。</td></tr>
+        <tr class="normal"><td>220</td><td><span class="badge">一般</span></td><td class="category">日历</td><td>转到今天</td><td>回到今天日期。</td><td class="combo">Command + T</td><td>日历 App 中有效；浏览器中是新标签页。</td></tr>
+        <tr class="normal"><td>221</td><td><span class="badge">一般</span></td><td class="category">日历</td><td>日/周/月/年视图</td><td>切换日历视图。</td><td class="combo">Command + 1 / Command + 2 / Command + 3 / Command + 4</td><td>Apple Calendar 常用。</td></tr>
+        <tr class="normal"><td>222</td><td><span class="badge">一般</span></td><td class="category">日历</td><td>搜索日程</td><td>搜索事件。</td><td class="combo">Command + F</td><td>焦点在日历 App 时适用。</td></tr>
+        <tr class="normal"><td>223</td><td><span class="badge">一般</span></td><td class="category">访达与系统</td><td>打开活动监视器</td><td>查看 CPU、内存、卡死进程。</td><td class="combo">Spotlight 搜索“活动监视器”</td><td>无系统默认快捷键；建议用 Command + Space Bar 搜索。</td></tr>
+        <tr class="normal"><td>224</td><td><span class="badge">一般</span></td><td class="category">访达与系统</td><td>打开终端</td><td>启动 Terminal。</td><td class="combo">Spotlight 搜索“终端”</td><td>无系统默认快捷键；可自定义。</td></tr>
+        <tr class="normal"><td>225</td><td><span class="badge">一般</span></td><td class="category">访达与系统</td><td>打开系统设置</td><td>启动 System Settings。</td><td class="combo">Apple 菜单 → 系统设置</td><td>也可用 Spotlight 搜索。</td></tr>
+        <tr class="normal"><td>226</td><td><span class="badge">一般</span></td><td class="category">访达与系统</td><td>显示控制中心</td><td>打开菜单栏右侧控制中心。</td><td class="combo">Fn key + C</td><td>若无效，可在系统设置里检查键盘快捷键。</td></tr>
+        <tr class="normal"><td>227</td><td><span class="badge">一般</span></td><td class="category">访达与系统</td><td>显示通知中心</td><td>打开通知中心。</td><td class="combo">点击日期时间，或自定义快捷键</td><td>macOS 默认键盘组合可能因版本/设置不同。</td></tr>
+        <tr class="common"><td>228</td><td><span class="badge">常用</span></td><td class="category">Chrome 浏览器</td><td>打开文件</td><td>在 Chrome 中打开本地文件。</td><td class="combo">Command + O</td><td>可打开 HTML、PDF、图片等。</td></tr>
+        <tr class="common"><td>229</td><td><span class="badge">常用</span></td><td class="category">Chrome 浏览器</td><td>保存网页</td><td>保存当前网页。</td><td class="combo">Command + S</td><td>网页保存格式由 Chrome 决定。</td></tr>
+        <tr class="normal"><td>230</td><td><span class="badge">一般</span></td><td class="category">Chrome 浏览器</td><td>打印网页</td><td>打开打印对话框。</td><td class="combo">Command + P</td><td>PDF 打印/另存为 PDF 时常用。</td></tr>
+        <tr class="normal"><td>231</td><td><span class="badge">一般</span></td><td class="category">Chrome 浏览器</td><td>停止加载</td><td>停止当前页面加载。</td><td class="combo">Escape</td><td>页面卡住或加载错误时可用。</td></tr>
+        <tr class="normal"><td>232</td><td><span class="badge">一般</span></td><td class="category">Chrome 浏览器</td><td>打开任务管理器</td><td>查看 Chrome 标签和扩展的资源占用。</td><td class="combo">Shift + Escape</td><td>如果无效，可从 Chrome 菜单 → 更多工具打开。</td></tr>
+        <tr class="normal"><td>233</td><td><span class="badge">一般</span></td><td class="category">Chrome 浏览器</td><td>查看源代码</td><td>查看当前网页 HTML 源码。</td><td class="combo">Option + Command + U</td><td>开发和排查网页时使用。</td></tr>
+        <tr class="normal"><td>234</td><td><span class="badge">一般</span></td><td class="category">Chrome 浏览器</td><td>打开扩展程序页</td><td>管理扩展程序。</td><td class="combo">地址栏输入 chrome://extensions</td><td>Chrome 没有稳定的 macOS 默认快捷键。</td></tr>
+        <tr class="normal"><td>235</td><td><span class="badge">一般</span></td><td class="category">Chrome 浏览器</td><td>网页内焦点前进/后退</td><td>在网页输入框、按钮、链接之间移动。</td><td class="combo">Tab / Shift + Tab</td><td>网页可访问性越好，键盘导航越顺。</td></tr>
+        <tr class="common"><td>236</td><td><span class="badge">常用</span></td><td class="category">终端</td><td>搜索历史命令</td><td>在历史命令中反向搜索。</td><td class="combo">Control + R</td><td>输入关键词后继续按 Control + R 可找更早记录。</td></tr>
+        <tr class="normal"><td>237</td><td><span class="badge">一般</span></td><td class="category">终端</td><td>删除到行首</td><td>删除光标前方到行首的内容。</td><td class="combo">Control + U</td><td>改长命令时很实用。</td></tr>
+        <tr class="normal"><td>238</td><td><span class="badge">一般</span></td><td class="category">终端</td><td>删除到行尾</td><td>删除光标后方到行尾的内容。</td><td class="combo">Control + K</td><td>shell 编辑常用。</td></tr>
+        <tr class="normal"><td>239</td><td><span class="badge">一般</span></td><td class="category">终端</td><td>粘贴被删除文本</td><td>粘贴 Control + U/K 等剪切的内容。</td><td class="combo">Control + Y</td><td>终端内部 kill ring，不等同系统剪贴板。</td></tr>
+        <tr class="normal"><td>240</td><td><span class="badge">一般</span></td><td class="category">终端</td><td>上一条/下一条历史</td><td>浏览历史命令。</td><td class="combo">Up Arrow / Down Arrow</td><td>比重新输入命令快。</td></tr>
+        <tr class="normal"><td>241</td><td><span class="badge">一般</span></td><td class="category">终端</td><td>跳到前/后一个词</td><td>在命令行中按词移动。</td><td class="combo">Option + Left Arrow / Option + Right Arrow</td><td>若输入特殊字符，需在 Terminal/iTerm 设置 Option 为 Meta。</td></tr>
+        <tr class="normal"><td>242</td><td><span class="badge">一般</span></td><td class="category">终端</td><td>拆分窗格</td><td>在 iTerm2 中拆分窗格。</td><td class="combo">Command + D / Shift + Command + D</td><td>Terminal 默认不一定支持；iTerm2 常用。</td></tr>
+        <tr class="normal"><td>243</td><td><span class="badge">一般</span></td><td class="category">终端</td><td>关闭当前会话</td><td>关闭当前终端会话或标签。</td><td class="combo">Control + D</td><td>相当于发送 EOF；有运行程序时可能先退出程序。</td></tr>
+        <tr class="advanced"><td>244</td><td><span class="badge">进阶</span></td><td class="category">Intel 开机</td><td>从网络启动</td><td>从兼容网络启动映像启动。</td><td class="combo">开机时按住 N</td><td>少见于企业或实验室环境。</td></tr>
+        <tr class="advanced"><td>245</td><td><span class="badge">进阶</span></td><td class="category">Intel 开机</td><td>重置 SMC</td><td>排查电源、风扇、充电、Touch Bar 异常。</td><td class="combo">关机后按住 Control + Option + Shift 约 7 秒，再同时按住 Power/Touch ID Button 约 7 秒</td><td>适用于带 T2 的 Intel MacBook Pro；操作前先关机并连接电源更稳。</td></tr>
+        <tr class="advanced"><td>246</td><td><span class="badge">进阶</span></td><td class="category">Intel 开机</td><td>启动安全性实用工具</td><td>在恢复模式中管理外部启动、安全启动。</td><td class="combo">先 Command + R 进入恢复，再打开“启动安全性实用工具”</td><td>带 T2 的 Intel Mac 常见。</td></tr>
+        <tr class="advanced"><td>247</td><td><span class="badge">进阶</span></td><td class="category">Intel 开机</td><td>选择启动磁盘</td><td>临时选择启动卷。</td><td class="combo">开机时按住 Option</td><td>和“启动管理器”同类，补充常见称呼。</td></tr>
+        <tr class="advanced"><td>248</td><td><span class="badge">进阶</span></td><td class="category">Intel 开机</td><td>安全启动并显示详情</td><td>以安全模式启动并显示启动详情。</td><td class="combo">开机时按住 Shift + Command + V</td><td>排查启动项和驱动问题时使用。</td></tr>
+      </tbody>
+    </table>
+  </main>
+
+  <footer>
+    参考来源：
+    <a href="https://support.apple.com/en-us/102650">Apple Support: Mac keyboard shortcuts</a>，
+    <a href="https://support.apple.com/en-lamr/guide/mac-help/kbdm162/mac">Apple Support: Keyboard settings on Mac</a>，
+    <a href="https://support.apple.com/en-ie/102603">Apple Support: Mac startup key combinations</a>，
+    <a href="https://support.google.com/chrome/answer/157179?co=GENIE.Platform%3DDesktop&hl=en">Google Chrome Help: Chrome keyboard shortcuts</a>。
+  </footer>
+  <script>
+    (() => {
+      const storageKey = "macbook-pro-shortcuts-table-v2";
+      const table = document.getElementById("shortcutsTable");
+      const tbody = table.querySelector("tbody");
+      const toolbar = document.querySelector(".toolbar");
+      const searchInput = document.getElementById("searchInput");
+      const status = document.getElementById("status");
+      const rowSpacingInput = document.getElementById("rowSpacing");
+      const columnSpacingInput = document.getElementById("columnSpacing");
+      const rowSpacingValue = document.getElementById("rowSpacingValue");
+      const columnSpacingValue = document.getElementById("columnSpacingValue");
+      const columns = ["level", "category", "name", "scene", "combo", "note"];
+      const defaultSettings = { rowSpacing: 8, columnSpacing: 12 };
+      let data = readDomRows();
+      let settings = readInitialSettings();
+      const initialData = structuredClone(data);
+      const initialSettings = structuredClone(settings);
+
+      function readDomRows() {
+        return Array.from(tbody.querySelectorAll("tr")).map((tr) => {
+          const cells = Array.from(tr.children);
+          const offset = cells.length > 7 ? 1 : 0;
+          return {
+            level: cells[offset + 1]?.innerText.trim() || "一般",
+            category: cells[offset + 2]?.innerText.trim() || "",
+            name: cells[offset + 3]?.innerText.trim() || "",
+            scene: cells[offset + 4]?.innerText.trim() || "",
+            combo: cells[offset + 5]?.innerText.trim() || "",
+            note: cells[offset + 6]?.innerText.trim() || ""
+          };
+        });
+      }
+
+      function escapeHtml(value) {
+        return String(value ?? "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;");
+      }
+
+      function classForLevel(level) {
+        if (level === "常用") return "common";
+        if (level === "进阶") return "advanced";
+        return "normal";
+      }
+
+      function normalizeLevel(level) {
+        return ["常用", "一般", "进阶"].includes(level) ? level : "一般";
+      }
+
+      function normalizeRow(row = {}) {
+        return {
+          level: normalizeLevel(row.level),
+          category: row.category || "",
+          name: row.name || "",
+          scene: row.scene || "",
+          combo: row.combo || "",
+          note: row.note || ""
+        };
+      }
+
+      function clampNumber(value, min, max, fallback) {
+        const number = Number(value);
+        if (!Number.isFinite(number)) return fallback;
+        return Math.min(max, Math.max(min, Math.round(number)));
+      }
+
+      function readInitialSettings() {
+        return {
+          rowSpacing: clampNumber(rowSpacingInput?.getAttribute("value") || rowSpacingInput?.value, 4, 16, defaultSettings.rowSpacing),
+          columnSpacing: clampNumber(columnSpacingInput?.getAttribute("value") || columnSpacingInput?.value, 6, 24, defaultSettings.columnSpacing)
+        };
+      }
+
+      function normalizeSettings(nextSettings = {}) {
+        return {
+          rowSpacing: clampNumber(nextSettings.rowSpacing, 4, 16, settings?.rowSpacing ?? defaultSettings.rowSpacing),
+          columnSpacing: clampNumber(nextSettings.columnSpacing, 6, 24, settings?.columnSpacing ?? defaultSettings.columnSpacing)
+        };
+      }
+
+      function applySettings(nextSettings = settings) {
+        settings = normalizeSettings(nextSettings);
+        document.documentElement.style.setProperty("--cell-padding-y", `${settings.rowSpacing}px`);
+        document.documentElement.style.setProperty("--cell-padding-x", `${settings.columnSpacing}px`);
+        if (rowSpacingInput) {
+          rowSpacingInput.value = settings.rowSpacing;
+          rowSpacingInput.setAttribute("value", String(settings.rowSpacing));
+        }
+        if (columnSpacingInput) {
+          columnSpacingInput.value = settings.columnSpacing;
+          columnSpacingInput.setAttribute("value", String(settings.columnSpacing));
+        }
+        if (rowSpacingValue) rowSpacingValue.textContent = `${settings.rowSpacing}px`;
+        if (columnSpacingValue) columnSpacingValue.textContent = `${settings.columnSpacing}px`;
+        requestAnimationFrame(updateStickyOffset);
+      }
+
+      function storagePayload() {
+        return {
+          version: 3,
+          rows: data.map(normalizeRow),
+          settings: { ...settings }
+        };
+      }
+
+      function rowToHtml(row, index) {
+        const level = normalizeLevel(row.level);
+        return `
+        <tr class="${classForLevel(level)}">
+          <td class="select-cell"><input class="row-select" type="checkbox" aria-label="选择第 ${index + 1} 行"></td>
+          <td>${index + 1}</td>
+          <td contenteditable="true" data-field="level"><span class="badge">${escapeHtml(level)}</span></td>
+          <td class="category" contenteditable="true" data-field="category">${escapeHtml(row.category)}</td>
+          <td contenteditable="true" data-field="name">${escapeHtml(row.name)}</td>
+          <td contenteditable="true" data-field="scene">${escapeHtml(row.scene)}</td>
+          <td class="combo" contenteditable="true" data-field="combo">${escapeHtml(row.combo)}</td>
+          <td contenteditable="true" data-field="note">${escapeHtml(row.note)}</td>
+          <td class="actions">
+            <button class="row-action duplicate" type="button">复制</button>
+            <button class="row-action delete" type="button">删除</button>
+          </td>
+        </tr>`;
+      }
+
+      function render(rows = data, selectedIndexes = []) {
+        const selectedSet = new Set(selectedIndexes);
+        tbody.innerHTML = rows.map(rowToHtml).join("");
+        Array.from(tbody.querySelectorAll("tr")).forEach((tr, index) => {
+          const checked = selectedSet.has(index);
+          tr.classList.toggle("is-selected", checked);
+          const input = tr.querySelector(".row-select");
+          if (input) input.checked = checked;
+        });
+        updateHeaderCount();
+        applySearch();
+      }
+
+      function syncDataFromDom() {
+        data = Array.from(tbody.querySelectorAll("tr")).map((tr) => ({
+          level: normalizeLevel(tr.querySelector('[data-field="level"]')?.innerText.trim() || "一般"),
+          category: tr.querySelector('[data-field="category"]')?.innerText.trim() || "",
+          name: tr.querySelector('[data-field="name"]')?.innerText.trim() || "",
+          scene: tr.querySelector('[data-field="scene"]')?.innerText.trim() || "",
+          combo: tr.querySelector('[data-field="combo"]')?.innerText.trim() || "",
+          note: tr.querySelector('[data-field="note"]')?.innerText.trim() || ""
+        }));
+      }
+
+      function updateHeaderCount() {
+        const count = tbody.querySelectorAll("tr").length;
+        const subs = document.querySelectorAll("header .sub");
+        if (subs[1]) {
+          subs[1].textContent = subs[1].textContent.replace(/当前共 \d+ 条快捷键\/操作入口/, `当前共 ${count} 条快捷键/操作入口`);
+        }
+      }
+
+      function setStatus(message) {
+        status.textContent = message;
+        window.clearTimeout(setStatus.timer);
+        setStatus.timer = window.setTimeout(() => {
+          status.textContent = "";
+        }, 3200);
+      }
+
+      function updateStickyOffset() {
+        if (!toolbar) return;
+        const styles = getComputedStyle(toolbar);
+        const marginBottom = parseFloat(styles.marginBottom) || 0;
+        const top = Math.ceil(toolbar.getBoundingClientRect().height + marginBottom);
+        document.documentElement.style.setProperty("--table-head-top", `${top}px`);
+      }
+
+      function saveLocal() {
+        syncDataFromDom();
+        localStorage.setItem(storageKey, JSON.stringify(storagePayload()));
+        setStatus(`已保存：${data.length} 条，行距 ${settings.rowSpacing}px，列距 ${settings.columnSpacing}px`);
+      }
+
+      function loadLocal() {
+        const saved = localStorage.getItem(storageKey);
+        if (!saved) return false;
+        try {
+          const parsed = JSON.parse(saved);
+          const rows = Array.isArray(parsed) ? parsed : parsed.rows;
+          if (!Array.isArray(rows)) return false;
+          data = rows.map(normalizeRow);
+          if (!Array.isArray(parsed) && parsed.settings) applySettings(parsed.settings);
+          render();
+          setStatus(`已加载本地保存版本：${data.length} 条`);
+          return true;
+        } catch {
+          setStatus("本地保存数据读取失败，已使用文件内初始版本");
+          return false;
+        }
+      }
+
+      function download(filename, content, type) {
+        const blob = new Blob([content], { type });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+      }
+
+      function exportJson() {
+        syncDataFromDom();
+        download("macbook-pro-shortcuts.json", JSON.stringify(storagePayload(), null, 2), "application/json;charset=utf-8");
+        setStatus("已导出 JSON");
+      }
+
+      function csvCell(value) {
+        return `"${String(value ?? "").replaceAll('"', '""')}"`;
+      }
+
+      function exportCsv() {
+        syncDataFromDom();
+        const header = ["常用程度", "分类", "快捷键简称", "使用场景", "快捷键组合", "注意事项"];
+        const rows = data.map((row) => [row.level, row.category, row.name, row.scene, row.combo, row.note]);
+        const csv = [header, ...rows].map((row) => row.map(csvCell).join(",")).join("\n");
+        download("macbook-pro-shortcuts.csv", `\ufeff${csv}`, "text/csv;charset=utf-8");
+        setStatus("已导出 CSV");
+      }
+
+      function exportHtml() {
+        syncDataFromDom();
+        localStorage.setItem(storageKey, JSON.stringify(storagePayload()));
+        applySettings(settings);
+        const exported = document.documentElement.outerHTML;
+        download("macbook-pro-shortcuts-editable.html", `<!doctype html>\n${exported}`, "text/html;charset=utf-8");
+        setStatus("已导出可编辑 HTML");
+      }
+
+      function applySearch() {
+        const query = searchInput.value.trim().toLowerCase();
+        Array.from(tbody.querySelectorAll("tr")).forEach((tr) => {
+          tr.classList.toggle("is-hidden", query && !tr.innerText.toLowerCase().includes(query));
+        });
+      }
+
+      function selectedIndexes() {
+        return Array.from(tbody.querySelectorAll("tr"))
+          .map((tr, index) => tr.querySelector(".row-select")?.checked ? index : -1)
+          .filter((index) => index >= 0);
+      }
+
+      function moveSelected(direction) {
+        syncDataFromDom();
+        const indexes = selectedIndexes();
+        if (!indexes.length) {
+          setStatus("先勾选一行或多行");
+          return;
+        }
+        let nextData = [...data];
+        let nextSelected = [...indexes];
+
+        if (direction === "up") {
+          for (const index of indexes) {
+            if (index === 0 || indexes.includes(index - 1)) continue;
+            [nextData[index - 1], nextData[index]] = [nextData[index], nextData[index - 1]];
+            nextSelected = nextSelected.map((value) => value === index ? index - 1 : value === index - 1 ? index : value);
+          }
+        }
+
+        if (direction === "down") {
+          for (const index of [...indexes].reverse()) {
+            if (index === nextData.length - 1 || indexes.includes(index + 1)) continue;
+            [nextData[index + 1], nextData[index]] = [nextData[index], nextData[index + 1]];
+            nextSelected = nextSelected.map((value) => value === index ? index + 1 : value === index + 1 ? index : value);
+          }
+        }
+
+        if (direction === "top") {
+          const selectedRows = indexes.map((index) => data[index]);
+          const restRows = data.filter((_, index) => !indexes.includes(index));
+          nextData = [...selectedRows, ...restRows];
+          nextSelected = selectedRows.map((_, index) => index);
+        }
+
+        if (direction === "bottom") {
+          const selectedRows = indexes.map((index) => data[index]);
+          const restRows = data.filter((_, index) => !indexes.includes(index));
+          nextData = [...restRows, ...selectedRows];
+          nextSelected = selectedRows.map((_, index) => restRows.length + index);
+        }
+
+        data = nextData;
+        render(data, nextSelected);
+        setStatus(`已移动 ${indexes.length} 行，记得保存`);
+      }
+
+      function addRow(afterIndex = data.length - 1, source = null) {
+        syncDataFromDom();
+        const row = source || {
+          level: "一般",
+          category: "自定义",
+          name: "新的快捷键",
+          scene: "填写使用场景",
+          combo: "填写快捷键组合",
+          note: "填写注意事项"
+        };
+        data.splice(afterIndex + 1, 0, structuredClone(row));
+        render();
+        setStatus("已新增一行，记得保存");
+      }
+
+      function resetTable() {
+        if (!confirm("确定恢复为初始版本？这会清除当前浏览器里保存的修改。")) return;
+        data = structuredClone(initialData);
+        applySettings(initialSettings);
+        localStorage.removeItem(storageKey);
+        render();
+        setStatus("已恢复初始版本");
+      }
+
+      tbody.addEventListener("input", (event) => {
+        const td = event.target.closest("td[data-field]");
+        if (!td) return;
+        if (td.dataset.field === "level") {
+          const tr = td.closest("tr");
+          const level = normalizeLevel(td.innerText.trim());
+          tr.className = classForLevel(level);
+        }
+      });
+
+      tbody.addEventListener("focusout", (event) => {
+        const td = event.target.closest("td[data-field]");
+        if (!td) return;
+        if (td.dataset.field === "level") {
+          const level = normalizeLevel(td.innerText.trim());
+          td.innerHTML = `<span class="badge">${escapeHtml(level)}</span>`;
+          td.closest("tr").className = classForLevel(level);
+        }
+        syncDataFromDom();
+      });
+
+      tbody.addEventListener("click", (event) => {
+        const checkbox = event.target.closest(".row-select");
+        if (checkbox) {
+          checkbox.closest("tr").classList.toggle("is-selected", checkbox.checked);
+          return;
+        }
+        const button = event.target.closest("button");
+        if (!button) return;
+        const tr = button.closest("tr");
+        const index = Array.from(tbody.children).indexOf(tr);
+        syncDataFromDom();
+        if (button.classList.contains("delete")) {
+          if (!confirm("删除这一行？")) return;
+          data.splice(index, 1);
+          render();
+          setStatus("已删除一行，记得保存");
+        }
+        if (button.classList.contains("duplicate")) {
+          addRow(index, data[index]);
+        }
+      });
+
+      searchInput.addEventListener("input", applySearch);
+      rowSpacingInput.addEventListener("input", () => applySettings({ ...settings, rowSpacing: rowSpacingInput.value }));
+      rowSpacingInput.addEventListener("change", () => setStatus("行距已调整，记得保存"));
+      columnSpacingInput.addEventListener("input", () => applySettings({ ...settings, columnSpacing: columnSpacingInput.value }));
+      columnSpacingInput.addEventListener("change", () => setStatus("列距已调整，记得保存"));
+      window.addEventListener("resize", updateStickyOffset);
+      if ("ResizeObserver" in window && toolbar) {
+        new ResizeObserver(updateStickyOffset).observe(toolbar);
+      }
+      document.getElementById("addRow").addEventListener("click", () => addRow());
+      document.getElementById("moveUp").addEventListener("click", () => moveSelected("up"));
+      document.getElementById("moveDown").addEventListener("click", () => moveSelected("down"));
+      document.getElementById("moveTop").addEventListener("click", () => moveSelected("top"));
+      document.getElementById("moveBottom").addEventListener("click", () => moveSelected("bottom"));
+      document.getElementById("saveTable").addEventListener("click", saveLocal);
+      document.getElementById("exportJson").addEventListener("click", exportJson);
+      document.getElementById("exportCsv").addEventListener("click", exportCsv);
+      document.getElementById("exportHtml").addEventListener("click", exportHtml);
+      document.getElementById("resetTable").addEventListener("click", resetTable);
+      document.getElementById("importJson").addEventListener("change", async (event) => {
+        const file = event.target.files?.[0];
+        if (!file) return;
+        try {
+          const imported = JSON.parse(await file.text());
+          const rows = Array.isArray(imported) ? imported : imported.rows;
+          if (!Array.isArray(rows)) throw new Error("JSON 必须包含快捷键数组");
+          data = rows.map(normalizeRow);
+          if (!Array.isArray(imported) && imported.settings) applySettings(imported.settings);
+          render();
+          setStatus(`已导入 ${data.length} 条，记得保存`);
+        } catch (error) {
+          setStatus(`导入失败：${error.message}`);
+        } finally {
+          event.target.value = "";
+        }
+      });
+
+      applySettings(settings);
+      render();
+      loadLocal();
+      requestAnimationFrame(updateStickyOffset);
+    })();
+  </script>
+</body>
+</html>
